@@ -1,0 +1,177 @@
+/* General Layout */
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #121212;
+  color: #eaeaea;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Flex container for sidebar + chat */
+.container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 300px;
+  background: #1a1a1d;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-right: 1px solid #2a2a2a;
+  overflow-y: auto;
+  box-shadow: inset -1px 0 0 #2a2a2a;
+}
+
+.url-input input {
+  padding: 12px;
+  width: 100%;
+  background-color: #262629;
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.url-input button {
+  padding: 10px;
+  background-color: #4e9af1;
+  border: none;
+  color: white;
+  width: 100%;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.url-input button:hover {
+  background-color: #3a82d4;
+}
+
+.url-history {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.url-btn {
+  background-color: #232326;
+  color: #ccc;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-size: 14px;
+}
+
+.url-btn:hover {
+  background-color: #2f2f32;
+}
+
+.url-btn.active {
+  background-color: #4e9af1;
+  color: #fff;
+}
+
+/* Chat Area */
+.chat-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  overflow-y: auto;
+  gap: 20px;
+}
+
+.chat-area h1 {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.chat-area input[type="text"],
+.chat-area textarea {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  background-color: #1e1e20;
+  border: 1px solid #333;
+  color: #f0f0f0;
+  font-size: 15px;
+  resize: vertical;
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.slider-container input[type="range"] {
+  flex: 1;
+}
+
+/* Answer Output */
+.answer-section {
+  margin-top: 10px;
+  background-color: #1d1d1f;
+  padding: 20px;
+  border-radius: 12px;
+  font-size: 15px;
+  line-height: 1.6;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+  white-space: pre-wrap;
+}
+
+/* General Buttons */
+button {
+  padding: 12px 20px;
+  background-color: #4e9af1;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #3a82d4;
+}
+
+/* Chat box preview */
+.chat-box {
+  background: #1e1e20;
+  border: 1px solid #333;
+  padding: 14px;
+  border-radius: 10px;
+  height: 200px;
+  overflow-y: auto;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  white-space: pre-wrap;
+}
+
+/* Spinner */
+.loading .spinner {
+  margin-top: 20px;
+  width: 32px;
+  height: 32px;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  border-top: 4px solid #4e9af1;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
