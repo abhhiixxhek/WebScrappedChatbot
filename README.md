@@ -1,15 +1,3 @@
-Thanks for the clarification! Based on your actual tech stack:
-
-* ✅ **Used Pinecone**, not ChromaDB
-* ✅ **Frontend built with React.js**, not Gradio
-* ✅ **Backend uses Flask + Ollama + Web scraping + Embeddings + Retrieval**
-
-Here’s your **updated and professional `README.md`**, fully aligned with your actual repo: [`abhhiixxhek/WebScrappedChatbot`](https://github.com/abhhiixxhek/WebScrappedChatbot):
-
----
-
-### `README.md`
-
 # 🤖 WebScrappedChatbot – Local RAG Chatbot with Pinecone & React
 
 A powerful chatbot system that scrapes content from websites, indexes it using **Ollama embeddings** and **Pinecone**, and delivers intelligent answers through a sleek **React.js frontend**. Built with a local **Flask API backend** and optimized for fast retrieval, customization, and a ChatGPT-style user experience.
