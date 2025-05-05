@@ -148,4 +148,3 @@ The React app will run on [http://localhost:3000](http://localhost:3000) and con
 
 ---
 
-Let me know if you want me to add deployment steps (Render, Vercel, etc.) or badges (Python version, license, stars)!
