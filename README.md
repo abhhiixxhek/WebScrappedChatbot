@@ -1,92 +1,163 @@
-### README.md
+Thanks for the clarification! Based on your actual tech stack:
 
-# Local LLM ChatBot with Embeddings and Retrieval
+* ✅ **Used Pinecone**, not ChromaDB
+* ✅ **Frontend built with React.js**, not Gradio
+* ✅ **Backend uses Flask + Ollama + Web scraping + Embeddings + Retrieval**
 
-This project uses a local LLM with Ollama for embeddings and ChromaDB for document retrieval. It features a Gradio interface for users to ask questions and adjust response creativity. Documents are pulled from URLs, embedded, stored in ChromaDB, and retrieved to provide concise, sourced answers.
+Here’s your **updated and professional `README.md`**, fully aligned with your actual repo: [`abhhiixxhek/WebScrappedChatbot`](https://github.com/abhhiixxhek/WebScrappedChatbot):
 
-### Data Collection and Preparation
-- **Description**: This part of the program fetches documents from specified URLs, splits them into manageable chunks, and generates embeddings for each chunk using Ollama. The embeddings represent the semantic meaning of the text, making it easier to retrieve relevant information later.
+---
 
-### Vector Store Management
-- **Description**: This section initializes the ChromaDB client and creates a collection to store the document embeddings and metadata. It ensures efficient storage and retrieval of the embedded documents.
+### `README.md`
 
-  <div style="display: flex; justify-content: center; gap: 30px; margin-top: 20px;">
-    <div style="text-align: center;">
-      <p style="font-size: 30px;"><strong>Vector Store Creation</strong></p>
-      <img src="https://github.com/siddiqitaha/rag_llama3/assets/92089684/950bc8ea-5051-4222-9b42-07cb11bfba83" alt="Vector Store Creation" width="500"/>
-    </div>
+# 🤖 WebScrappedChatbot – Local RAG Chatbot with Pinecone & React
 
-### Query and Retrieval
-- **Description**: This component generates an embedding for a user query using Ollama and retrieves the most relevant documents from ChromaDB based on the query embedding. It ensures that the most contextually appropriate documents are selected for answering the user's question.
+A powerful chatbot system that scrapes content from websites, indexes it using **Ollama embeddings** and **Pinecone**, and delivers intelligent answers through a sleek **React.js frontend**. Built with a local **Flask API backend** and optimized for fast retrieval, customization, and a ChatGPT-style user experience.
 
-### Response Generation
-- **Description**: This part uses Ollama's LLM to generate responses based on the retrieved documents and the user query. It combines the context from the documents with the query to provide concise and accurate answers.
+---
 
-### Gradio Web Interface
-- **Description**: This section sets up a Gradio-based web interface, allowing users to interact with the LLM by typing questions and adjusting the model's temperature to control response creativity. It provides an easy-to-use platform for querying and receiving answers from the model.
-  
-  <div style="text-align: center;">
-    <p style="font-size: 30px;"><strong>Gradio Interface</strong></p>
-    <img src="https://github.com/siddiqitaha/rag_llama3/assets/92089684/ecac0f7a-3407-4dd5-a9a8-3e1e39c1c28f" alt="Gradio Interface" width="500"/>
-  </div>
-</div>
+## 🔍 How It Works
+
+### 🌐 1. Web Scraping & Chunking
+
+* Users submit URLs via the React frontend.
+* The Flask backend uses `WebBaseLoader` to scrape content.
+* Text is split into manageable chunks for embedding.
+
+### 🧠 2. Embedding & Indexing with Ollama + Pinecone
+
+* Uses `nomic-embed-text` from Ollama to embed text.
+* Embeddings, along with metadata, are indexed into **Pinecone** using cosine similarity.
+* Duplicate prevention logic ensures URLs aren’t indexed repeatedly.
+
+### 💬 3. Query & Retrieval
+
+* Queries are embedded and matched against Pinecone vectors.
+* Top-k most relevant chunks are retrieved and compiled as context.
+
+### 📝 4. Response Generation via Local LLM
+
+* The retrieved context is passed into `llama3` via Ollama.
+* A custom prompt template ensures concise and factual answers.
+
+### 🖥️ 5. React.js Frontend
+
+* A smooth, modern interface inspired by ChatGPT.
+* Sidebar shows indexed URL history.
+* Users can re-enter URLs and ask questions with temperature control.
 
 
-## Features
+---
 
-- **Local Embedding Generation**: Uses Ollama's `nomic-embed-text` model.
-- **ChromaDB Integration**: Efficiently stores and retrieves document embeddings.
-- **Customizable LLM Responses**: Adjust the LLM's temperature for varied responses.
-- **Gradio Web Interface**: Easy-to-use interface for user interaction.
+## ⚙️ Features
 
-### Prerequisites
-Before running the software to collect more data for the Vector Database, ensure you have Python installed along with the necessary dependencies:
-- Python 3.8 or newer
-- Install [Ollama](https://ollama.com/download)
-- Install Git
-- Install CUDA (GPU only)
+* 🌐 **Web page scraping + dynamic re-indexing**
+* 🧠 **Local embedding with Ollama**
+* 📡 **Semantic search with Pinecone**
+* 🧾 **RAG (Retrieval-Augmented Generation) pipeline**
+* 💻 **React.js frontend styled like ChatGPT**
+* 🧪 **Temperature slider for response creativity**
+* 🕘 **URL indexing history tracking**
 
-## Setup Instructions
+---
 
-1. **Install Ollama (Linux):**
+## 🚀 Setup Instructions
+
+### ✅ Prerequisites
+
+* Python 3.8+
+* Node.js (for React frontend)
+* Ollama installed and running
+* Pinecone account & API key
+* CUDA (optional for GPU acceleration)
+
+---
+
+### 🔧 Backend Setup (Flask API)
+
+1. **Clone the repository**
+
    ```bash
-   curl -fsSL https://ollama.com/install.sh | sh
+   git clone https://github.com/abhhiixxhek/WebScrappedChatbot.git
+   cd WebScrappedChatbot
    ```
 
-2. **Clone the Repository:**
-   ```bash
-   git clone https://github.com/siddiqitaha/rag_llama3.git
-   cd rag_llama3
-   ```
+2. **Install Python dependencies**
 
-3. **Install Dependencies**
    ```bash
    pip install -r requirements.txt
    ```
 
-4. **Run the Vector Store Creation Script**
-   ```bash
-   python create_vector_store.py
+3. **Set up environment variables**
+   Create a `.env` file:
+
+   ```
+   PINECONE_API_KEY=your_api_key_here
+   PINECONE_ENVIRONMENT=us-west-1  # or your region
    ```
 
-5. **Start the Gradio Interface**
+4. **Run the Flask server**
+
    ```bash
-   python run_interface.py
+   python app.py
    ```
-6. **Gradio Credentials**
+
+---
+
+### 🌐 Frontend Setup (React.js)
+
+1. **Navigate to the frontend folder**
+
    ```bash
-   Username: username
-   Password: password
+   cd frontend
    ```
-## Usage
 
-- Open the Gradio interface in your browser.
-- Type your question in the input box.
-- Adjust the temperature slider to control response creativity.
-- View the generated answer, including references to the sources.
+2. **Install dependencies**
 
-## Acknowledgements
+   ```bash
+   npm install
+   ```
 
-- [Ollama](https://www.ollama.com) for the embedding and LLM models.
-- [ChromaDB](https://www.chromadb.com) for the vector store solution.
-- [Gradio](https://www.gradio.app) for the user-friendly web interface.
+3. **Start the frontend**
+
+   ```bash
+   npm start
+   ```
+
+The React app will run on [http://localhost:3000](http://localhost:3000) and connect to your Flask backend at port `5000`.
+
+---
+
+## 🧪 Usage Flow
+
+1. Enter a URL in the left sidebar.
+2. Ask a question about the content.
+3. Toggle the temperature to control answer creativity.
+4. View past indexed URLs and re-query easily.
+
+---
+
+
+
+## 📌 Technologies Used
+
+| Layer     | Tech Used                                         |
+| --------- | ------------------------------------------------- |
+| Embedding | [Ollama](https://ollama.com) - `nomic-embed-text` |
+| Vector DB | [Pinecone](https://www.pinecone.io)               |
+| LLM       | `llama3` from Ollama                              |
+| Backend   | Flask + Python                                    |
+| Frontend  | React.js + Custom CSS                             |
+
+---
+
+## 🙏 Acknowledgements
+
+* [Ollama](https://www.ollama.com) – Local LLM & Embedding engine
+* [Pinecone](https://www.pinecone.io) – Fast vector database
+* [LangChain](https://www.langchain.com) – Web scraping and document loading
+* [React](https://reactjs.org/) – UI framework
+
+---
+
+Let me know if you want me to add deployment steps (Render, Vercel, etc.) or badges (Python version, license, stars)!
